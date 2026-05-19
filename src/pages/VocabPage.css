@@ -1,0 +1,189 @@
+.vocab-hero-stats {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.stat-pill {
+  flex: 1;
+  padding: 0.85rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.stat-pill strong {
+  display: block;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--vocab);
+}
+
+.stat-pill span {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.vocab-filters {
+  margin-bottom: 1rem;
+}
+
+.flashcard {
+  min-height: 300px;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  border: 2px solid var(--border);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.flashcard:hover {
+  border-color: rgba(167, 139, 250, 0.35);
+}
+
+.flashcard.flipped {
+  border-color: var(--vocab);
+  box-shadow: 0 0 32px rgba(167, 139, 250, 0.12);
+}
+
+.flashcard .flash-front,
+.flashcard .flash-back {
+  padding: 2rem 1.5rem 1.5rem;
+  text-align: center;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.flash-back {
+  display: none;
+}
+
+.flashcard.flipped .flash-front {
+  display: none;
+}
+
+.flashcard.flipped .flash-back {
+  display: flex;
+}
+
+.fc-cat {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--vocab);
+  background: var(--vocab-soft);
+  padding: 0.3rem 0.55rem;
+  border-radius: var(--radius-full);
+}
+
+.speak-fab {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid var(--vocab);
+  background: var(--vocab-soft);
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+  transition: transform 0.15s;
+}
+
+.speak-fab:hover {
+  transform: scale(1.06);
+}
+
+.flashcard h2 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
+}
+
+.ipa {
+  color: var(--vocab);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.tap {
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  margin-top: 1rem;
+}
+
+.vi {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--vocab);
+  margin-bottom: 0.85rem;
+}
+
+.ex {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.55;
+  max-width: 420px;
+}
+
+.rate-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+}
+
+.rate {
+  padding: 0.7rem 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: var(--radius);
+  border: 2px solid var(--border);
+  background: var(--surface);
+}
+
+.rate.again {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.rate.good {
+  border-color: var(--vocab);
+  color: var(--vocab);
+}
+
+.rate.easy {
+  border-color: var(--success);
+  color: var(--success);
+}
+
+.vocab-nav {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.vocab-nav .btn {
+  flex: 1;
+  padding: 0.7rem 0.5rem;
+  font-size: 0.82rem;
+}
+
+.vocab-nav .btn-primary {
+  background: linear-gradient(135deg, #7c3aed, var(--vocab));
+  color: #fff;
+  border-color: transparent;
+}
+
+.vocab-dock {
+  position: sticky;
+  bottom: calc(var(--nav-h) + 0.5rem);
+  z-index: 10;
+}
