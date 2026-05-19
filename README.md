@@ -9,7 +9,6 @@ App React (Vite) ôn phỏng vấn Full-Stack — deploy **Vercel**.
 ## Chạy local
 
 ```bash
-cd interview-web
 npm install
 npm run dev
 ```
@@ -18,7 +17,7 @@ Mở http://localhost:5173
 
 ## Cập nhật dữ liệu từ file HTML gốc
 
-Sau khi sửa `interview-prep.html`, `interview-quiz.html`, `interview-vocab.html` ở thư mục `cv/`:
+Sau khi sửa `interview-prep.html`, `interview-quiz.html`, `interview-vocab.html` (thư mục `cv/`):
 
 ```bash
 npm run extract
@@ -26,43 +25,58 @@ npm run extract
 
 ## Deploy Vercel
 
-### Cách 1 — GitHub (khuyên dùng)
+Repo GitHub: [huy1992nd/interview_app](https://github.com/huy1992nd/interview_app)
 
-1. Push repo lên GitHub (thư mục `interview-web` hoặc cả repo `cv`)
-2. Vào [vercel.com](https://vercel.com) → **Add New Project**
-3. Import repo → **Root Directory**: `interview-web`
-4. **Framework Preset**: Vite
-5. Build: `npm run build` · Output: `dist`
-6. **Deploy**
+### Bước 1 — Import project
 
-### Cách 2 — CLI
+1. Đăng nhập [vercel.com](https://vercel.com) (nên dùng **Continue with GitHub**)
+2. **Add New…** → **Project**
+3. Import repo **`huy1992nd/interview_app`**
+4. **Root Directory**: để trống `/` (repo đã là app React, không cần `interview-web`)
+
+### Bước 2 — Cấu hình build (Vercel tự nhận Vite)
+
+| Mục | Giá trị |
+|-----|---------|
+| Framework Preset | **Vite** |
+| Build Command | `npm run build` |
+| Output Directory | `dist` |
+| Install Command | `npm install` |
+
+File `vercel.json` trong repo đã khai báo sẵn — thường không cần sửa tay.
+
+### Bước 3 — Deploy
+
+Bấm **Deploy** → chờ 1–2 phút → mở URL dạng `https://interview-app-xxx.vercel.app`
+
+Mỗi lần `git push` lên `main`, Vercel tự build lại (nếu bật Git integration).
+
+### Deploy bằng CLI (tùy chọn)
 
 ```bash
 npm i -g vercel
-cd interview-web
 npm run build
-vercel
+vercel          # lần đầu: link project
+vercel --prod   # production
 ```
 
-Lần đầu chọn link project → production URL dạng `https://interview-prep-xxx.vercel.app`
+### iPhone — thêm vào màn hình chính
+
+Safari → mở link Vercel → **Share** → **Add to Home Screen**
+
+## File liên quan Vercel
+
+```
+vercel.json       # Build + SPA routing (React Router)
+.nvmrc            # Node 20 trên Vercel
+public/           # favicon, fallback redirects
+```
 
 ## Cấu trúc
 
 ```
-interview-web/
-  src/
-    data/          # Tự sinh từ HTML (npm run extract)
-    pages/         # Prep, Quiz, Vocab
-    components/    # Layout + bottom nav
-  vercel.json      # SPA routing
+src/
+  data/          # Tự sinh từ HTML (npm run extract)
+  pages/         # Prep, Quiz, Vocab
+  components/    # Layout + bottom nav
 ```
-
-## So với iOS
-
-| | React + Vercel | Capacitor iOS |
-|---|----------------|---------------|
-| Cần Xcode | ❌ | ✅ |
-| Mở trên iPhone | Trình duyệt / Add to Home Screen | App native |
-| Deploy | Vài phút | Phức tạp hơn |
-
-Trên iPhone: mở link Vercel → Safari → **Share → Add to Home Screen** để dùng như app.
